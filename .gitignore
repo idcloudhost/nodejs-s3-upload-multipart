@@ -1,0 +1,11 @@
+.vscode-test
+
+package-lock.json
+*.log
+
+node_modules/
+
+assets/*
+!assets/.gitignore
+
+.env
