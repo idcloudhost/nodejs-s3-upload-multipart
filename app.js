@@ -11,8 +11,8 @@ const s3 = new AWS.S3({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-// const filename = "assets/test.img";
-const filename = "assets/movie.mp4";
+const filename = "assets/test.img";
+// const filename = "assets/movie.mp4";
 const fileContent = fs.readFileSync(filename);
 
 const params = {
@@ -22,9 +22,11 @@ const params = {
 };
 
 /**
- * Uploading a file with concurrency of 4 and partSize of 8mb
+ * Uploading a file with concurrency of 8 and partSize of 8mb
+ * if you do not add the multipart parameter, then the default part size is 5mb and the default concurrency is 4
  */
-const options = { partSize: 8 * 1024 * 1024, queueSize: 4 };
+const options = { partSize: 8 * 1024 * 1024, queueSize: 8 };
+// const options = {};
 
 try {
   await s3
